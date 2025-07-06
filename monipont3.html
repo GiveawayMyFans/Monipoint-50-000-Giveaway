@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Claim Your Monipont Prize</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #e0ffe4, #f8f9fa);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    .box {
+      background: #fff;
+      padding: 40px 20px;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      max-width: 400px;
+      width: 90%;
+      position: relative;
+      animation: bounceIn 1.2s ease;
+    }
+
+    h1 {
+      font-size: 2em;
+      color: #28a745;
+    }
+
+    p {
+      font-size: 16px;
+      margin: 10px 0 20px;
+      color: #444;
+    }
+
+    button {
+      background: linear-gradient(to right, #28a745, #218838);
+      color: white;
+      padding: 14px 30px;
+      border: none;
+      border-radius: 50px;
+      font-size: 16px;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(40, 167, 69, 0.4);
+      transition: transform 0.2s ease;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+
+    .sparkle {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: gold;
+      border-radius: 50%;
+      animation: sparkle 1.5s infinite ease-in-out;
+    }
+
+    @keyframes sparkle {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(2); opacity: 0.5; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes bounceIn {
+      0% { transform: scale(0.7); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .sparkle:nth-child(1) { top: -10px; left: 50%; animation-delay: 0s; }
+    .sparkle:nth-child(2) { bottom: -10px; right: 40%; animation-delay: 0.5s; }
+    .sparkle:nth-child(3) { top: 10px; left: 10px; animation-delay: 1s; }
+
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div class="sparkle"></div>
+    <div class="sparkle"></div>
+    <div class="sparkle"></div>
+
+    <h1>🎉 You're Almost There!</h1>
+    <p>You've earned ₦50,000 from Monipont. Hit the button below to claim your reward.</p>
+    <button onclick="claimPrize()">Claim ₦50,000</button>
+  </div>
+
+  <script>
+    function claimPrize() {
+      alert("🎁 Prize Claimed! You will be credited shortly.");
+      // In real use case, redirect or process the claim
+      // window.location.href = "https://monipont.com/dashboard";
+    }
+  </script>
+</body>
+</html>
