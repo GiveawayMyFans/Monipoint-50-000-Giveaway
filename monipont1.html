@@ -16,12 +16,9 @@
       background: #1e1e1e;
       padding: 2rem;
       border-radius: 12px;
-      box-shadow: 0 0 10px #444;
       max-width: 500px;
       margin: auto;
-    }
-    h1 {
-      color: #00ff88;
+      box-shadow: 0 0 10px #333;
     }
     .link-box {
       background: #222;
@@ -66,34 +63,38 @@
     }
     #continueBtn {
       display: none;
-      margin-top: 1rem;
+      margin-top: 1.5rem;
       background: #0099ff;
     }
   </style>
 </head>
 <body>
   <div class="card">
-    <h1>₦50,000 Monipont Giveaway!</h1>
-    <p>Invite your friends to Monipont and unlock your reward!</p>
+    <h1>₦50,000 Monipont Giveaway</h1>
+    <p>Share your link with 10 people to unlock your reward</p>
     
     <div class="link-box">
-      <input type="text" id="refLink" value="https://monipont.com/signup?ref=yourusername" readonly />
+      <input type="text" id="refLink" value="https://monipont.com/ref/yourname" readonly />
       <button onclick="copyLink()">Copy</button>
     </div>
 
     <div class="progress-container">
-      <p>Share to <b>10 people</b> to continue</p>
+      <p>Share Count: <span id="count">0</span>/10</p>
       <div class="progress-bar">
-        <div class="progress-fill" id="progressFill"></div>
+        <div class="progress-fill" id="progress"></div>
       </div>
-      <p><span id="shareCount">0</span>/10 shares done</p>
-      <button onclick="simulateShare()">I Shared</button>
+      <button onclick="shareClicked()">I Shared</button>
     </div>
 
     <button id="continueBtn" onclick="goNext()">Continue</button>
   </div>
 
   <script>
+    let count = 0;
+    const progress = document.getElementById("progress");
+    const countText = document.getElementById("count");
+    const continueBtn = document.getElementById("continueBtn");
+
     function copyLink() {
       const link = document.getElementById("refLink");
       link.select();
@@ -101,34 +102,21 @@
       alert("Link copied!");
     }
 
-    let shareCount = parseInt(localStorage.getItem('monipont_share_count')) || 0;
-    const progressFill = document.getElementById("progressFill");
-    const shareCountText = document.getElementById("shareCount");
-    const continueBtn = document.getElementById("continueBtn");
-
-    function updateProgress() {
-      const percent = (shareCount / 10) * 100;
-      progressFill.style.width = percent + "%";
-      shareCountText.innerText = shareCount;
-      if (shareCount >= 10) {
-        continueBtn.style.display = "block";
-      }
-    }
-
-    function simulateShare() {
-      if (shareCount < 10) {
-        shareCount++;
-        localStorage.setItem('monipont_share_count', shareCount);
-        updateProgress();
+    function shareClicked() {
+      if (count < 10) {
+        count++;
+        countText.innerText = count;
+        progress.style.width = (count * 10) + "%";
+        if (count === 10) {
+          continueBtn.style.display = "inline-block";
+        }
       }
     }
 
     function goNext() {
-      window.location.href = "nextpage.html"; // Replace with your real page
+      // Replace this with your next page
+      window.location.href = "nextpage.html";
     }
-
-    // Initialize
-    updateProgress();
   </script>
 </body>
 </html>
