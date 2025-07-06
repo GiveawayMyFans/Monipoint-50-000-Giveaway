@@ -115,7 +115,7 @@
     function shareOnWhatsApp() {
       const message = 🎉 Monipont is giving out ₦50,000 to users!\n✅ Just share your unique link & invite others\n🚀 The more you share, the faster you win!\n👉 https://tinyurl.com/Monipoint-Giveaway;
       const encodedMessage = encodeURIComponent(message);
-      const whatsappUrl = https://wa.me/?text=${encodedMessage};
+      const whatsappUrl = 'https://wa.me/?text=${encodedMessage}';
 
       // Open WhatsApp share in new tab
       window.open(whatsappUrl, '_blank');
