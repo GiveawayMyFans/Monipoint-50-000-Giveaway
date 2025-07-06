@@ -6,109 +6,129 @@
   <title>Monipont ₦50,000 Giveaway</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #28a745, #007bff);
-      margin: 0;
-      padding: 20px;
+      background: #111;
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
       text-align: center;
-      color: #333;
+      padding: 2rem;
     }
-    .container {
-      background: white;
-      padding: 30px;
+    .card {
+      background: #1e1e1e;
+      padding: 2rem;
       border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      box-shadow: 0 0 10px #444;
       max-width: 500px;
       margin: auto;
     }
     h1 {
-      color: #007bff;
+      color: #00ff88;
     }
-    p {
-      font-size: 18px;
+    .link-box {
+      background: #222;
+      padding: 1rem;
+      border-radius: 10px;
+      margin-top: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
-    .ref-box {
-      background: #eef;
-      padding: 10px;
-      border-radius: 8px;
-      margin: 20px 0;
-      word-wrap: break-word;
+    input {
+      flex: 1;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 16px;
     }
     button {
-      padding: 10px 20px;
-      background: #007bff;
-      color: white;
+      background: #00ff88;
       border: none;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-    button:hover {
-      background: #0056b3;
-    }
-    .progress {
-      margin-top: 20px;
-      background: #ddd;
+      padding: 10px 15px;
       border-radius: 8px;
-      height: 20px;
-      position: relative;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+    .progress-container {
+      margin-top: 2rem;
     }
     .progress-bar {
+      background: #333;
+      border-radius: 20px;
+      overflow: hidden;
+      height: 20px;
+      width: 100%;
+      margin-bottom: 10px;
+    }
+    .progress-fill {
+      background: #00ff88;
       height: 100%;
-      background: #28a745;
       width: 0%;
-      border-radius: 8px;
-      transition: 0.3s;
+      transition: width 0.3s;
+    }
+    #continueBtn {
+      display: none;
+      margin-top: 1rem;
+      background: #0099ff;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Monipont ₦50,000 Giveaway 🎉</h1>
-    <p>Monipont is giving ₦50,000 to active users! Share your referral link to claim yours.</p>
+  <div class="card">
+    <h1>₦50,000 Monipont Giveaway!</h1>
+    <p>Invite your friends to Monipont and unlock your reward!</p>
     
-    <div class="ref-box" id="refLink">
-     🎉 Monipont is giving out ₦50,000 to users!
-     ✅ Just share your unique link & invite others
-    🚀 The more you share, the faster you win!
-     👇 Click & start now:
-
-  👉 [https://tinyurl.com/Monipoint-Giveaway]
-
+    <div class="link-box">
+      <input type="text" id="refLink" value="https://monipont.com/signup?ref=yourusername" readonly />
+      <button onclick="copyLink()">Copy</button>
     </div>
-    <button onclick="copyLink()">Copy Link</button>
 
-    <div class="progress">
-      <div class="progress-bar" id="progressBar"></div>
+    <div class="progress-container">
+      <p>Share to <b>10 people</b> to continue</p>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+      <p><span id="shareCount">0</span>/10 shares done</p>
+      <button onclick="simulateShare()">I Shared</button>
     </div>
-    <p><span id="clicks">0</span>/10 referrals completed</p>
 
-    <p style="margin-top: 30px; font-size: 14px;">Once you get 10 people to visit your link, you’ll receive ₦50,000 instantly.</p>
-     <button onclick="nextPage()">Continue</button>
+    <button id="continueBtn" onclick="goNext()">Continue</button>
   </div>
-  <script>
-    function nextPage() {
-      // Replace with your actual next page
-      window.location.href = "monipont2.html";
-    }
-  </script>
 
   <script>
-    let clicks = 0;
-
     function copyLink() {
-      const linkText = document.getElementById('refLink').innerText;
-      navigator.clipboard.writeText(linkText);
-      alert("Referral link copied!");
-      // Simulate referral count increment
-      if (clicks < 10) {
-        clicks++;
-        document.getElementById('clicks').innerText = clicks;
-        document.getElementById('progressBar').style.width = (clicks * 10) + '%';
-      }
-      if (clicks === 10) {
-        alert("🎉 Congrats! You've qualified for ₦50,000 from Monipont.");
+      const link = document.getElementById("refLink");
+      link.select();
+      document.execCommand("copy");
+      alert("Link copied!");
+    }
+
+    let shareCount = parseInt(localStorage.getItem('monipont_share_count')) || 0;
+    const progressFill = document.getElementById("progressFill");
+    const shareCountText = document.getElementById("shareCount");
+    const continueBtn = document.getElementById("continueBtn");
+
+    function updateProgress() {
+      const percent = (shareCount / 10) * 100;
+      progressFill.style.width = percent + "%";
+      shareCountText.innerText = shareCount;
+      if (shareCount >= 10) {
+        continueBtn.style.display = "block";
       }
     }
+
+    function simulateShare() {
+      if (shareCount < 10) {
+        shareCount++;
+        localStorage.setItem('monipont_share_count', shareCount);
+        updateProgress();
+      }
+    }
+
+    function goNext() {
+      window.location.href = "nextpage.html"; // Replace with your real page
+    }
+
+    // Initialize
+    updateProgress();
   </script>
 </body>
 </html>
