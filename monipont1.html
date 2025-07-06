@@ -52,6 +52,7 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
+      text-decoration: none;
     }
     .share-btn:hover {
       background: #1ebd5a;
@@ -74,19 +75,25 @@
       display: none;
       background: #28a745;
       margin-top: 20px;
+      padding: 10px 20px;
+      border: none;
+      color: #fff;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
 
-  <!-- Banner Image at Top -->
+  <!-- Banner Image -->
   <img class="top-banner" src="https://via.placeholder.com/1200x250.png?text=Monipont+Giveaway+%E2%82%A650%2C000" alt="Monipont Giveaway">
 
   <div class="container">
     <h1>Monipont ₦50,000 Giveaway 🎉</h1>
     <p>Monipont is giving ₦50,000 to active users! Share your referral link to claim yours.</p>
     
-    <div class="ref-box" id="refLink">
+    <div class="ref-box">
       🎉 Monipont is giving out ₦50,000 to users!<br>
       ✅ Just share your unique link & invite others<br>
       🚀 The more you share, the faster you win!<br>
@@ -94,11 +101,13 @@
       👉 <strong>https://tinyurl.com/Monipoint-Giveaway</strong>
     </div>
 
-    <button class="share-btn" onclick="shareOnWhatsApp()">
+    <!-- WhatsApp Share Button -->
+    <a href="#" class="share-btn" onclick="return shareOnWhatsApp()">
       <img src="https://img.icons8.com/ios-filled/24/ffffff/whatsapp.png"/>
       Share on WhatsApp
-    </button>
+    </a>
 
+    <!-- Progress Bar -->
     <div class="progress">
       <div class="progress-bar" id="progressBar"></div>
     </div>
@@ -115,26 +124,30 @@
     function shareOnWhatsApp() {
       const message = 🎉 Monipont is giving out ₦50,000 to users!\n✅ Just share your unique link & invite others\n🚀 The more you share, the faster you win!\n👉 https://tinyurl.com/Monipoint-Giveaway;
       const encodedMessage = encodeURIComponent(message);
-      const whatsappUrl = `https://wa.me/?text=${encodedMessage}`;
+      const whatsappUrl = https://wa.me/?text=${encodedMessage};
 
-      // Open WhatsApp share in new tab
+      // Open WhatsApp sharing in a new tab
       window.open(whatsappUrl, '_blank');
 
-      // Simulate referral count increase
-      if (clicks < 10) {
-        clicks++;
-        document.getElementById('clicks').innerText = clicks;
-        document.getElementById('progressBar').style.width = (clicks * 10) + '%';
-      }
+      // Simulate referral after short delay
+      setTimeout(() => {
+        if (clicks < 10) {
+          clicks++;
+          document.getElementById('clicks').innerText = clicks;
+          document.getElementById('progressBar').style.width = (clicks * 10) + '%';
+        }
 
-      if (clicks === 10) {
-        alert("🎉 Congrats! You've qualified for ₦50,000 from Monipont.");
-        document.getElementById('continueBtn').style.display = 'inline-block';
-      }
+        if (clicks === 10) {
+          alert("🎉 Congrats! You've qualified for ₦50,000 from Monipont.");
+          document.getElementById('continueBtn').style.display = 'inline-block';
+        }
+      }, 2000); // Simulate delay after opening WhatsApp
+
+      return false; // Prevent default link behavior
     }
 
     function nextPage() {
-      window.location.href = "monipont2.html"; // Change to your actual next page
+      window.location.href = "monipont2.html"; // Update with your actual URL
     }
   </script>
 
