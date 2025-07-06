@@ -3,109 +3,98 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Welcome to Monipont</title>
+  <title>Monipont ₦50,000 Giveaway</title>
   <style>
     body {
+      font-family: Arial, sans-serif;
+      background: #f2f6fc;
       margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #28a745, #007bff);
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
+      padding: 20px;
       text-align: center;
-      overflow: hidden;
+      color: #333;
     }
-
     .container {
-      animation: fadeInUp 1.5s ease forwards;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
       max-width: 500px;
-      padding: 40px 20px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 20px;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.2);
-      backdrop-filter: blur(10px);
+      margin: auto;
     }
-
     h1 {
-      font-size: 2.5em;
-      margin-bottom: 10px;
+      color: #007bff;
     }
-
     p {
-      font-size: 16px;
-      margin: 10px 0 30px;
-      line-height: 1.5;
+      font-size: 18px;
     }
-
+    .ref-box {
+      background: #eef;
+      padding: 10px;
+      border-radius: 8px;
+      margin: 20px 0;
+      word-wrap: break-word;
+    }
     button {
-      padding: 14px 30px;
-      font-size: 16px;
-      background: #ffc107;
-      color: #111;
+      padding: 10px 20px;
+      background: #007bff;
+      color: white;
       border: none;
-      border-radius: 50px;
+      border-radius: 6px;
       cursor: pointer;
-      transition: transform 0.3s;
     }
-
     button:hover {
-      transform: scale(1.05);
+      background: #0056b3;
     }
-
-    @keyframes fadeInUp {
-      0% {
-        opacity: 0;
-        transform: translateY(60px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .progress {
+      margin-top: 20px;
+      background: #ddd;
+      border-radius: 8px;
+      height: 20px;
+      position: relative;
     }
-
-    .circle {
-      position: absolute;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.05);
-      animation: float 6s infinite ease-in-out;
+    .progress-bar {
+      height: 100%;
+      background: #28a745;
+      width: 0%;
+      border-radius: 8px;
+      transition: 0.3s;
     }
-
-    .circle:nth-child(1) {
-      width: 100px; height: 100px;
-      top: 10%; left: 15%;
-    }
-
-    .circle:nth-child(2) {
-      width: 150px; height: 150px;
-      bottom: 20%; right: 10%;
-      animation-delay: 2s;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-20px); }
-    }
-
   </style>
 </head>
 <body>
-  <div class="circle"></div>
-  <div class="circle"></div>
-
   <div class="container">
-    <h1>Welcome to Monipont</h1>
-    <p>We’re giving away <strong>₦50,000</strong> to every Monipont user! All you need to do is share your special link with friends.</p>
-    <p>The more you share, the faster you win!</p>
-    <button onclick="nextPage()">Get Started</button>
+    <h1>Monipont ₦50,000 Giveaway 🎉</h1>
+    <p>Monipont is giving ₦50,000 to active users! Share your referral link to claim yours.</p>
+    
+    <div class="ref-box" id="refLink">
+      https://monipont.com/giveaway?ref=yourname
+    </div>
+    <button onclick="copyLink()">Copy Link</button>
+
+    <div class="progress">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+    <p><span id="clicks">0</span>/10 referrals completed</p>
+
+    <p style="margin-top: 30px; font-size: 14px;">Once you get 10 people to visit your link, you’ll receive ₦50,000 instantly.</p>
   </div>
 
   <script>
-    function nextPage() {
-      // Replace with your actual next page
-      window.location.href = "share.html";
+    let clicks = 0;
+
+    function copyLink() {
+      const linkText = document.getElementById('refLink').innerText;
+      navigator.clipboard.writeText(linkText);
+      alert("Referral link copied!");
+      // Simulate referral count increment
+      if (clicks < 10) {
+        clicks++;
+        document.getElementById('clicks').innerText = clicks;
+        document.getElementById('progressBar').style.width = (clicks * 10) + '%';
+      }
+      if (clicks === 10) {
+        alert("🎉 Congrats! You've qualified for ₦50,000 from Monipont.");
+      }
     }
   </script>
 </body>
