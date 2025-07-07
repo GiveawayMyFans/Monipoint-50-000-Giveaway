@@ -9,15 +9,9 @@
       font-family: Arial, sans-serif;
       background: linear-gradient(135deg, #28a745, #007bff);
       margin: 0;
-      padding: 0;
+      padding: 20px;
       text-align: center;
       color: #333;
-    }
-    img.top-banner {
-      width: 100%;
-      max-height: 250px;
-      object-fit: cover;
-      margin-bottom: 20px;
     }
     .container {
       background: white;
@@ -41,18 +35,20 @@
       word-wrap: break-word;
     }
     .share-btn {
-      padding: 12px 25px;
-      background: #25d366;
-      color: white;
-      font-size: 16px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      margin-top: 10px;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      justify-content: center;
+      padding: 10px 20px;
+      background: #25d366;
+      color: white;
       text-decoration: none;
+      font-weight: bold;
+      border-radius: 6px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+    .share-btn img {
+      margin-right: 10px;
     }
     .share-btn:hover {
       background: #1ebd5a;
@@ -73,47 +69,48 @@
     }
     #continueBtn {
       display: none;
-      background: #28a745;
-      margin-top: 20px;
+      background: #007bff;
+      color: white;
       padding: 10px 20px;
       border: none;
-      color: #fff;
       border-radius: 6px;
-      font-size: 16px;
+      margin-top: 20px;
       cursor: pointer;
+    }
+    #continueBtn:hover {
+      background: #0056b3;
     }
   </style>
 </head>
 <body>
-
-  <!-- Banner Image -->
-  <img class="top-banner" src="https://via.placeholder.com/1200x250.png?text=Monipont+Giveaway+%E2%82%A650%2C000" alt="Monipont Giveaway">
-
   <div class="container">
     <h1>Monipont ₦50,000 Giveaway 🎉</h1>
     <p>Monipont is giving ₦50,000 to active users! Share your referral link to claim yours.</p>
     
-    <div class="ref-box">
+    <div class="ref-box" id="refLink">
       🎉 Monipont is giving out ₦50,000 to users!<br>
-      ✅ Just share your unique link & invite others<br>
-      🚀 The more you share, the faster you win!<br>
-      👇 Click & start now:<br><br>
+      ✅ Just share your unique link & invite others!<br>
+      🚀 The more you share, the faster you win!<br><br>
       👉 <strong>https://tinyurl.com/Monipoint-Giveaway</strong>
     </div>
 
     <!-- WhatsApp Share Button -->
-    <a href="#" class="share-btn" onclick="return shareOnWhatsApp()">
+    <a
+      class="share-btn"
+      href="https://wa.me/?text=🎉%20Monipont%20is%20giving%20out%20₦50%2C000%20to%20users!%20✅%20Just%20share%20your%20unique%20link%20and%20invite%20others!%20🚀%20The%20more%20you%20share%2C%20the%20faster%20you%20win!%20👉%20https%3A%2F%2Ftinyurl.com%2FMonipoint-Giveaway"
+      target="_blank"
+      onclick="simulateShare()"
+    >
       <img src="https://img.icons8.com/ios-filled/24/ffffff/whatsapp.png"/>
       Share on WhatsApp
     </a>
 
-    <!-- Progress Bar -->
     <div class="progress">
       <div class="progress-bar" id="progressBar"></div>
     </div>
     <p><span id="clicks">0</span>/10 shares completed</p>
 
-    <p style="margin-top: 30px; font-size: 14px;">Once you share 10 times, you’ll receive ₦50,000 instantly.</p>
+    <p style="margin-top: 30px; font-size: 14px;">Once you share to 10 people, you'll unlock the ₦50,000 giveaway.</p>
 
     <button id="continueBtn" onclick="nextPage()">Continue</button>
   </div>
@@ -121,35 +118,24 @@
   <script>
     let clicks = 0;
 
-    function shareOnWhatsApp() {
-      const message = 🎉 Monipont is giving out ₦50,000 to users!\n✅ Just share your unique link & invite others\n🚀 The more you share, the faster you win!\n👉 https://tinyurl.com/Monipoint-Giveaway`;
-      const encodedMessage = encodeURIComponent(message);
-      const whatsappUrl = `https://wa.me/?text=${encodedMessage}`;
+    function simulateShare() {
+      // Simulate one share per click
+      if (clicks < 10) {
+        clicks++;
+        document.getElementById('clicks').innerText = clicks;
+        document.getElementById('progressBar').style.width = (clicks * 10) + '%';
+      }
 
-      // Open WhatsApp sharing in a new tab
-      window.open(whatsappUrl, '_blank');
-
-      // Simulate referral after short delay
-      setTimeout(() => {
-        if (clicks < 10) {
-          clicks++;
-          document.getElementById('clicks').innerText = clicks;
-          document.getElementById('progressBar').style.width = (clicks * 10) + '%';
-        }
-
-        if (clicks === 10) {
-          alert("🎉 Congrats! You've qualified for ₦50,000 from Monipont.");
-          document.getElementById('continueBtn').style.display = 'inline-block';
-        }
-      }, 2000); // Simulate delay after opening WhatsApp
-
-      return false; // Prevent default link behavior
+      if (clicks === 10) {
+        alert("🎉 Congrats! You've qualified for ₦50,000 from Monipont.");
+        document.getElementById('continueBtn').style.display = 'inline-block';
+      }
     }
 
     function nextPage() {
-      window.location.href = "monipont2.html"; // Update with your actual URL
+      // Replace with your actual next page
+      window.location.href = "monipont2.html";
     }
   </script>
-
 </body>
 </html>
