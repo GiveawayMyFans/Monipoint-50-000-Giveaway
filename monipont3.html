@@ -1,142 +1,105 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Monipont ₦50,000 Giveaway</title>
+  <title>Claim Your Monipont Prize</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #28a745, #007bff);
       margin: 0;
       padding: 0;
-      text-align: center;
-      color: #333;
-    }
-    img.top-banner {
-      width: 100%;
-      max-height: 250px;
-      object-fit: cover;
-      margin-bottom: 20px;
-    }
-    .container {
-      background: white;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      max-width: 500px;
-      margin: auto;
-    }
-    h1 {
-      color: #007bff;
-    }
-    p {
-      font-size: 18px;
-    }
-    .ref-box {
-      background: #eef;
-      padding: 10px;
-      border-radius: 8px;
-      margin: 20px 0;
-      word-wrap: break-word;
-    }
-    .share-btn {
-      padding: 12px 25px;
-      background: #25d366;
-      color: white;
-      font-size: 16px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      margin-top: 10px;
-      display: inline-flex;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #e0ffe4, #f8f9fa);
+      display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 8px;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
     }
-    .share-btn:hover {
-      background: #1ebd5a;
-    }
-    .progress {
-      margin-top: 20px;
-      background: #ddd;
-      border-radius: 8px;
-      height: 20px;
+
+    .box {
+      background: #fff;
+      padding: 40px 20px;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      max-width: 400px;
+      width: 90%;
       position: relative;
+      animation: bounceIn 1.2s ease;
     }
-    .progress-bar {
-      height: 100%;
-      background: #28a745;
-      width: 0%;
-      border-radius: 8px;
-      transition: 0.3s;
+
+    h1 {
+      font-size: 2em;
+      color: #28a745;
     }
-    #continueBtn {
-      display: none;
-      background: #28a745;
-      margin-top: 20px;
+
+    p {
+      font-size: 16px;
+      margin: 10px 0 20px;
+      color: #444;
     }
+
+    button {
+      background: linear-gradient(to right, #28a745, #218838);
+      color: white;
+      padding: 14px 30px;
+      border: none;
+      border-radius: 50px;
+      font-size: 16px;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(40, 167, 69, 0.4);
+      transition: transform 0.2s ease;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+
+    .sparkle {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: gold;
+      border-radius: 50%;
+      animation: sparkle 1.5s infinite ease-in-out;
+    }
+
+    @keyframes sparkle {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(2); opacity: 0.5; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes bounceIn {
+      0% { transform: scale(0.7); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .sparkle:nth-child(1) { top: -10px; left: 50%; animation-delay: 0s; }
+    .sparkle:nth-child(2) { bottom: -10px; right: 40%; animation-delay: 0.5s; }
+    .sparkle:nth-child(3) { top: 10px; left: 10px; animation-delay: 1s; }
+
   </style>
 </head>
 <body>
+  <div class="box">
+    <div class="sparkle"></div>
+    <div class="sparkle"></div>
+    <div class="sparkle"></div>
 
-  <!-- Banner Image at Top -->
-  <img class="top-banner" src="https://via.placeholder.com/1200x250.png?text=Monipont+Giveaway+%E2%82%A650%2C000" alt="Monipont Giveaway">
-
-  <div class="container">
-    <h1>Monipont ₦50,000 Giveaway 🎉</h1>
-    <p>Monipont is giving ₦50,000 to active users! Share your referral link to claim yours.</p>
-    
-    <div class="ref-box" id="refLink">
-      🎉 Monipont is giving out ₦50,000 to users!<br>
-      ✅ Just share your unique link & invite others<br>
-      🚀 The more you share, the faster you win!<br>
-      👇 Click & start now:<br><br>
-      👉 <strong>https://tinyurl.com/Monipoint-Giveaway</strong>
-    </div>
-
-    <button class="share-btn" onclick="shareOnWhatsApp()">
-      <center><img class="top-banner" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhQrlMyPccKPBgtWuN1xkSq8HdJBijR-plsw3zs6BbKh4oyGroZ6xkpZsdd200NiBLM1AFjsonPO40n4s8sZ0Y2Jovq5fFCkY5QQLJ_m9S5WNP_XC-TwXIUEoaM0BvBdVQju56X1j81O9bbWiSUgnHWaXk6AZkxfRQoLwgKbIXH5SreB0D33z_0nez6hyphenhyphenQ/s320/WhatsApp%20Image%202025-07-06%20at%2021.59.30_eaa7eb80.jpg" alt="Monipont Giveaway""> </center>
-      Share on WhatsApp
-    </button>
-
-    <div class="progress">
-      <div class="progress-bar" id="progressBar"></div>
-    </div>
-    <p><span id="clicks">0</span>/10 shares completed</p>
-
-    <p style="margin-top: 30px; font-size: 14px;">Once you share 10 times, you’ll receive ₦50,000 instantly.</p>
-
-    <button id="continueBtn" onclick="nextPage()">Continue</button>
+    <h1>🎉 You're Almost There!</h1>
+    <p>You've earned ₦50,000 from Monipont. Hit the button below to claim your reward.</p>
+    <button onclick="claimPrize()">Claim ₦50,000</button>
   </div>
 
   <script>
-    let clicks = 0;
-
-    function shareOnWhatsApp() {
-      const message = 🎉 Monipont is giving out ₦50,000 to users!\n✅ Just share your unique link & invite others\n🚀 The more you share, the faster you win!\n👉 https://tinyurl.com/Monipoint-Giveaway;
-      const encodedMessage = encodeURIComponent(message);
-      const whatsappUrl = https://wa.me/?text=${encodedMessage};
-
-      // Open WhatsApp share in new tab
-      window.open(whatsappUrl, '_blank');
-
-      // Simulate referral count increase
-      if (clicks < 10) {
-        clicks++;
-        document.getElementById('clicks').innerText = clicks;
-        document.getElementById('progressBar').style.width = (clicks * 10) + '%';
-      }
-
-      if (clicks === 10) {
-        alert("🎉 Congrats! You've qualified for ₦50,000 from Monipont.");
-        document.getElementById('continueBtn').style.display = 'inline-block';
-      }
-    }
-
-    function nextPage() {
-      window.location.href = "monipont2.html"; // Change to your actual next page
+    function claimPrize() {
+      alert("🎁 Prize Claimed! You will be credited shortly.");
+      // In real use case, redirect or process the claim
+      // window.location.href = "https://monipont.com/dashboard";
     }
   </script>
-
 </body>
 </html>
